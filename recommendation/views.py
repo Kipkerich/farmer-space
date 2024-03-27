@@ -1,6 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .forms import RecommendationForm
-from .my_processing_script import process_input
+from .my_processing_script import preparation
 
 def my_view(request):
     if request.method == 'POST':
@@ -16,20 +16,29 @@ def my_view(request):
                 'humidity': form.cleaned_data['humidity'],
                 'soil_ph': form.cleaned_data['soil_ph'],
             }
-            processed_result = process_input(input_data)
+            processed_result = preparation(input_data)
             return render(request, 'result.html', {'result': processed_result})
     else:
         form = RecommendationForm()
     return render(request, 'recommend.html', {'form': form})
 
 def submit_recommendation_view(request):
+    form = RecommendationForm(request.POST)
+   
     if request.method == 'POST':
+        
         form = RecommendationForm(request.POST)
         if form.is_valid():
+            print("Something submitted")
             input_data = form.cleaned_data
-            processed_result = process_input(input_data)
-            # Do something with the processed result
-            return redirect('result.html')  # Redirect to a success page
+            processed_result = preparation(input_data)
+            return render(request,'result.html', {'processed_data_list': processed_result})  # Redirect to a success page
+        else:
+            print("Invalid Form")
     else:
         form = RecommendationForm()
     return render(request, 'recommend.html', {'form': form})
+
+def result(request):
+    context = {}
+    return render(request, 'result.html', context)

@@ -1,8 +1,8 @@
 # urls.py
 from django.urls import path,include
-from .views import my_view
-from .views import submit_recommendation_view
+from .import views
 urlpatterns = [
-    path("result/", my_view, name= "result-url"),
-    path('submit_recommendation/', submit_recommendation_view, name='submit_recommendation'),
+    path("result/", views.result, name= "result-url"),
+    path('submit_recommendation/', views.submit_recommendation_view, name='submit_recommendation'),
+    
 ]

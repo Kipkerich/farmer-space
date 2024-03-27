@@ -1,5 +1,11 @@
-{% extends master.html %}
+{% extends 'master.html' %}
 {% block content %}
-<h1>Result page</h1>
 
+<h1>Result page</h1>
+<h1>Processed Data</h1>
+<ul>
+    {% for item in processed_data_list %}
+        <li>{{ item }}</li>
+    {% endfor %}
+</ul>
 {%endblock%}
