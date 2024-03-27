@@ -1,0 +1,95 @@
+{% extends 'master.html' %}
+{% block content %}
+<h2 class="text-center">
+  Get your Recommendation
+</h2>
+<form method="post" action="{% url 'submit_recommendation' %}">
+  {% csrf_token %}
+  {{ form.as_p }}
+<div class="input-group">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="">Nitrogen, Phosphorous, Potassium (NPK)</span>
+  </div>
+  <input type="number" class="form-control" name="npk1">
+  <input type="number" class="form-control" name="npk2">
+  <input type="number" class="form-control" name="npk3">
+</div>
+<div class="input-group">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="">Rainfall, Temperature Humidity</span>
+  </div>
+  <input type="number" class="form-control" name="rainfall">
+  <input type="number" class="form-control" name="temperature">
+  <input type="number" class="form-control" name="soil_ph">
+</div>
+<div class="input-group">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="">Soil pH</span>
+  </div>
+  <input type="number" class="form-control">
+  
+</div>
+
+<button type="submit" class="btn btn-secondary">Submit</button>
+</form>
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1>Nitrogen, Potassium and Phosphorous</h1>
+    <p>Soil N:P:K levels can be measured through soil testing, where soil samples are analyzed in a laboratory
+       to determine their nutrient content. Various methods, such as chemical extraction or spectroscopy, 
+       can be used to quantify the levels of nitrogen, phosphorus, and potassium in the soil. 
+       The results of soil testing help guide fertilization practices, allowing farmers and gardeners to apply fertilizers or soil amendments to correct nutrient deficiencies and maintain soil fertility for optimal plant growth.</p>
+  </div>
+</div>
+
+
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1>Rainfall, Temperature and Humidity</h1>
+        <p>Rainfall, temperature, and humidity are key environmental factors that significantly influence crop growth and productivity.</p>
+        <h2>Rainfall</h2>
+        <li>
+          <ul><b>Dry area:</b> Less than 500mm </ul>
+          <ul><b>Moderate area:</b> 500mm-1000mm </ul>
+          <ul><b>Wet area:</b> Greater than 1000mm</ul>
+        </li>
+        <h2>Temperature</h2>
+        <li>
+          <ul><b>Very Hot:</b> Above 35 &deg;C </ul>
+          <ul><b>Hot:</b> 20&deg;C - 30 &deg;C </ul>
+          <ul><b>Cold:</b> 0&deg;C - 20 &deg;C</ul>
+          <ul><b>Very Cold:</b> Below 0&deg;C</ul>
+        </li>
+        <h2>Humidity</h2>
+        <li>
+          <ul><b>Low:</b> Below 30% </ul>
+          <ul><b>Moderate:</b> 30%-60% </ul>
+          <ul><b>High:</b> 60%-70%</ul>
+          <ul><b>Very Cold:</b> Above 80%</ul>
+        </li>
+      </div>
+    </div>
+
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1>Soil pH</h1>
+        <p>To optimize plant growth and health, it's essential to understand the soil pH of your growing area
+           and choose plant species that are well-suited to the soil conditions. Soil pH can be adjusted through
+            soil amendments such as lime (to raise pH) or sulfur (to lower pH), but these adjustments should be 
+            made carefully and based on soil testing to avoid overcorrection or unintended consequences. R
+            egular soil testing and monitoring are essential for maintaining optimal soil pH levels for plant growth.</p>
+            <li>
+              <ul><b>Acidic Soil:</b>4-6.9</ul>
+              <ul><b>Neutral Soil:</b>7</ul>
+              <ul><b>Basic Soil:</b>7.1-10</ul>
+            </li>
+      </div>
+    </div>
+    
+
+
+{%endblock%}
+
+
+  
