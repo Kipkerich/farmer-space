@@ -690,3 +690,26 @@ a:focus {
   color: #222222;
 }
 /*# sourceMappingURL=style.css.map */
+
+/* Style the button */
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px; /* Adjust as needed */
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: #555;
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 50%;
+}
+
+/* On hover, change background color */
+#myBtn:hover {
+  background-color: hsl(313, 79%, 36%);
+}
+

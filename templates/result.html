@@ -1,11 +1,13 @@
 {% extends 'master.html' %}
 {% block content %}
 
-<h1>Result page</h1>
-<h1>Processed Data</h1>
+
+<h1>Recommended Crops</h1>
+<p>Consider planting one of the following crops;</p>
 <ul>
     {% for item in processed_data_list %}
         <li>{{ item }}</li>
     {% endfor %}
 </ul>
+<a href="{% url 'blog-url' %}"> Click Here to Learn More </a>
 {%endblock%}
