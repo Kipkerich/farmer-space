@@ -1,96 +1,111 @@
 {% extends 'master.html' %}
 {% block content %}
-<h2 class="text-center">
-  Get your Recommendation
-</h2>
-<form method="POST" action="{% url 'submit_recommendation' %}">
-  {% csrf_token %}
-  {{ form.as_p }}
-<div class="input-group">
-  <div class="input-group-prepend">
-    <span class="input-group-text" id="">Nitrogen, Phosphorous, Potassium (NPK)</span>
-  </div>
-  <input type="number" class="form-control" name="Nitrogen">
-  <input type="number" class="form-control" name="phosphorus">
-  <input type="number" class="form-control" name="potassium">
-</div>
-<div class="input-group">
-  <div class="input-group-prepend">
-    <span class="input-group-text" id="">Rainfall, Temperature Humidity</span>
-  </div>
-  <input type="number" class="form-control" name="rainfall">
-  <input type="number" class="form-control" name="temperature">
-  <input type="number" class="form-control" name="humidity">
-</div>
-<div class="input-group">
-  <div class="input-group-prepend">
-    <span class="input-group-text" id="">Soil pH</span>
-  </div>
-  <input type="number" class="form-control" name="ph">
+<div class="container">
+  <h2 class="text-center my-4">Get your Recommendation</h2>
   
-</div>
+  <form method="POST" action="{% url 'submit_recommendation' %}" class="p-4 shadow-lg bg-white rounded">
+    {% csrf_token %}
+    {{ form.as_p }}
 
-<button type="submit" class="btn btn-secondary">Submit</button>
-</form>
-
-<div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1>Nitrogen, Potassium and Phosphorous</h1>
-    <p>Soil N:P:K levels can be measured through soil testing, where soil samples are analyzed in a laboratory
-       to determine their nutrient content. Various methods, such as chemical extraction or spectroscopy, 
-       can be used to quantify the levels of nitrogen, phosphorus, and potassium in the soil. 
-       The results of soil testing help guide fertilization practices, allowing farmers and gardeners to apply fertilizers or soil amendments to correct nutrient deficiencies and maintain soil fertility for optimal plant growth.</p>
-  </div>
-</div>
-
-
-    <div class="jumbotron jumbotron-fluid">
-      <div class="container">
-        <h1>Rainfall, Temperature and Humidity</h1>
-        <p>Rainfall, temperature, and humidity are key environmental factors that significantly influence crop growth and productivity.</p>
-        <h2>Rainfall</h2>
-        <ul>
-          <li><b>Dry area:</b> Less than 500mm </li>
-          <li><b>Moderate area:</b> 500mm-1000mm </li>
-          <li><b>Wet area:</b> Greater than 1000mm</li>
-        </ul>
-        <h2>Temperature</h2>
-        <ul>
-          <li><b>Very Hot:</b> Above 35 &deg;C </li>
-          <li><b>Hot:</b> 20&deg;C - 30 &deg;C </li>
-          <li><b>Cold:</b> 0&deg;C - 20 &deg;C</li>
-          <li><b>Very Cold:</b> Below 0&deg;C</li>
-        </li>
-        </ul>
-        <h2>Humidity</h2>
-        <ul>
-          <li><b>Low:</b> Below 30% </li>
-          <li><b>Moderate:</b> 30%-60% </li>
-          <li><b>High:</b> 60%-70%</li>
-          <li><b>Very Cold:</b> Above 80%</li>
-        </ul>
+    <div class="row mb-3">
+      <label class="col-sm-3 col-form-label fw-bold">NPK (Nitrogen, Phosphorus, Potassium)</label>
+      <div class="col-sm-3">
+        <input type="number" class="form-control" name="Nitrogen" placeholder="Nitrogen">
+      </div>
+      <div class="col-sm-3">
+        <input type="number" class="form-control" name="phosphorus" placeholder="Phosphorus">
+      </div>
+      <div class="col-sm-3">
+        <input type="number" class="form-control" name="potassium" placeholder="Potassium">
       </div>
     </div>
 
-    <div class="jumbotron jumbotron-fluid">
-      <div class="container">
-        <h1>Soil pH</h1>
-        <p>To optimize plant growth and health, it's essential to understand the soil pH of your growing area
-           and choose plant species that are well-suited to the soil conditions. Soil pH can be adjusted through
-            soil amendments such as lime (to raise pH) or sulfur (to lower pH), but these adjustments should be 
-            made carefully and based on soil testing to avoid overcorrection or unintended consequences. R
-            egular soil testing and monitoring are essential for maintaining optimal soil pH levels for plant growth.</p>
-            <ul>
-              <li><b>Acidic Soil:</b>4-6.9</li>
-              <li><b>Neutral Soil:</b>7</li>
-              <li><b>Basic Soil:</b>7.1-10</li>
-            </ul>
+    <div class="row mb-4">
+      <label class="col-sm-3 col-form-label fw-bold">Rainfall</label>
+      <div class="col-sm-9">
+        <input type="number" class="form-control" name="rainfall" placeholder="Rainfall (mm)">
       </div>
     </div>
-    
+    <div class="row mb-4">
+      <label class="col-sm-3 col-form-label fw-bold">Temperature</label>
+      <div class="col-sm-9">
+        <input type="number" class="form-control" name="temperature" placeholder="Temperature (°C)">
+      </div>
+    </div>
+    <div class="row mb-4">
+      <label class="col-sm-3 col-form-label fw-bold">Humidity</label>
+      <div class="col-sm-9">
+        <input type="number" class="form-control" name="humidity" placeholder="Humidity (%)">
+      </div>
+    </div>
 
+    <div class="row mb-4">
+      <label class="col-sm-3 col-form-label fw-bold">Soil pH</label>
+      <div class="col-sm-9">
+        <input type="number" class="form-control" name="ph" placeholder="Soil pH Level">
+      </div>
+    </div>
 
-{%endblock%}
+    <div class="text-center">
+      <button type="submit" class="btn btn-success btn-lg px-5">Submit</button>
+    </div>
+  </form>
 
+  <!-- Information Sections -->
+  <div class="jumbotron jumbotron-fluid bg-light shadow rounded p-4 mt-5">
+    <div class="container">
+      <h1 class="display-6">Nitrogen, Phosphorus, and Potassium</h1>
+      <p class="lead">
+        Soil N:P:K levels can be measured through soil testing, where samples are analyzed in a lab.
+        This helps guide fertilization practices, ensuring optimal plant growth and soil fertility.
+      </p>
+    </div>
+  </div>
 
-  
+  <div class="jumbotron jumbotron-fluid bg-light shadow rounded p-4 mt-4">
+    <div class="container">
+      <h1 class="display-6">Rainfall, Temperature, and Humidity</h1>
+      <p class="lead">These environmental factors significantly influence crop growth and productivity.</p>
+      
+      <h2 class="h4">Rainfall</h2>
+      <ul>
+        <li><b>Dry area:</b> Less than 500mm</li>
+        <li><b>Moderate area:</b> 500mm - 1000mm</li>
+        <li><b>Wet area:</b> Greater than 1000mm</li>
+      </ul>
+
+      <h2 class="h4">Temperature</h2>
+      <ul>
+        <li><b>Very Hot:</b> Above 35°C</li>
+        <li><b>Hot:</b> 20°C - 30°C</li>
+        <li><b>Cold:</b> 0°C - 20°C</li>
+        <li><b>Very Cold:</b> Below 0°C</li>
+      </ul>
+
+      <h2 class="h4">Humidity</h2>
+      <ul>
+        <li><b>Low:</b> Below 30%</li>
+        <li><b>Moderate:</b> 30% - 60%</li>
+        <li><b>High:</b> 60% - 80%</li>
+        <li><b>Very High:</b> Above 80%</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="jumbotron jumbotron-fluid bg-light shadow rounded p-4 mt-4">
+    <div class="container">
+      <h1 class="display-6">Soil pH</h1>
+      <p class="lead">
+        Soil pH affects plant health and nutrient availability. Adjusting pH with lime (to raise) or sulfur (to lower)
+        helps maintain optimal growing conditions.
+      </p>
+      <ul>
+        <li><b>Acidic Soil:</b> 4 - 6.9</li>
+        <li><b>Neutral Soil:</b> 7</li>
+        <li><b>Basic Soil:</b> 7.1 - 10</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+{% endblock %}

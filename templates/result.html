@@ -1,13 +1,21 @@
 {% extends 'master.html' %}
 {% block content %}
 
+<div class="container text-center my-5">
+    <h1 class="mb-3">🌱 Recommended Crops</h1>
+    <p class="lead">Consider planting one of the following crops:</p>
 
-<h1>Recommended Crops</h1>
-<p>Consider planting one of the following crops;</p>
-<ul>
-    {% for item in processed_data_list %}
-        <li>{{ item }}</li>
-    {% endfor %}
-</ul>
-<a href="{% url 'blog-url' %}"> Click Here to Learn More </a>
-{%endblock%}
+    <div class="card shadow-lg p-4 bg-light mx-auto" style="max-width: 500px;">
+        <ul class="list-group list-group-flush">
+            {% for item in processed_data_list %}
+                <li class="list-group-item">{{ item }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <a href="{% url 'blog-url' %}" class="btn btn-success btn-lg mt-4">
+        🌾 Learn More About These Crops
+    </a>
+</div>
+
+{% endblock %}
